@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evilx.github.io/sitemap.xml
+Sitemap: https://evilx.github.io/geo-photo-library/sitemap.xml
