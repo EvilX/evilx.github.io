@@ -57,6 +57,7 @@ header .wrap { display: flex; align-items: center; height: 64px; gap: 12px; }
 .brand { font-weight: 650; letter-spacing: -.01em; text-decoration: none; }
 .top { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .top a { display: inline-flex; padding: 7px; border-radius: 9px; color: var(--muted); }
+.top a.sec { padding: 7px 12px; font-size: 15px; text-decoration: none; }
 .top a:hover { background: var(--line); color: var(--text); }
 .top svg { width: 20px; height: 20px; }
 .langs { display: inline-flex; padding: 2px; border-radius: 9px; border: 1px solid var(--line); }
@@ -77,7 +78,7 @@ h1 { font-size: clamp(34px, 6vw, 54px); line-height: 1.08; letter-spacing: -.03e
 h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lead { font-size: 19px; color: var(--muted); max-width: 620px; margin: 0; }
 
-.projects { display: grid; gap: 28px; padding-bottom: 72px; }
+.projects { display: grid; gap: 28px; }
 .card {
   display: grid; grid-template-columns: 1fr 1.15fr; gap: 0;
   background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
@@ -92,7 +93,11 @@ h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -w
 .icon img { width: 52px; height: 52px; }
 .pip { background: linear-gradient(135deg, #7b5cff, #2f6bff); }
 .ocr { background: linear-gradient(135deg, #ff7a3c, #e0456b); }
-h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; line-height: 1.2; }
+.card h3 { margin: 0; font-size: 24px; letter-spacing: -.02em; line-height: 1.2; }
+.section { padding-bottom: 64px; scroll-margin-top: 16px; }
+.section-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 20px; }
+.section-head h2 { margin: 0; font-size: 28px; letter-spacing: -.02em; line-height: 1.2; }
+.section-head p { margin: 0; color: var(--muted); }
 .kind { font-size: 14px; color: var(--muted); }
 .card p { margin: 0; color: var(--muted); }
 .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
@@ -127,6 +132,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 footer a { color: var(--muted); }
 
 @media (max-width: 820px) {
+  .top a.sec { display: none; }
   .card { grid-template-columns: 1fr; }
   .card .shot { order: -1; }
   .card .body { padding: 24px; }
@@ -139,6 +145,8 @@ footer a { color: var(--muted); }
   <div class="wrap">
     <a class="brand" href="/">EvilX</a>
     <div class="top">
+      <a class="sec" href="#apps" data-i18n="apps">Apps</a>
+      <a class="sec" href="#gnome" data-i18n="gnome">GNOME extensions</a>
       <a href="https://github.com/EvilX" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
       <div class="langs" role="group" aria-label="Language">
         <button type="button" data-lang="en">EN</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="el">EL</button>
@@ -155,12 +163,14 @@ footer a { color: var(--muted); }
     </div>
   </section>
 
-  <section class="wrap projects">
+  <section class="wrap section" id="apps">
+    <div class="section-head"><h2 data-i18n="apps">Apps</h2><p data-i18n="apps.sub">Desktop programs for macOS, Linux and Windows</p></div>
+    <div class="projects">
     <article class="card">
       <div class="body">
         <div class="head">
           <img class="icon" src="img/geo-photo-library.svg" alt="" width="52" height="52">
-          <div><h2>GeoPhotoLibrary</h2><div class="kind" data-i18n="gpl.kind">App for macOS, Linux and Windows</div></div>
+          <div><h3>GeoPhotoLibrary</h3><div class="kind" data-i18n="gpl.kind">App for macOS, Linux and Windows</div></div>
         </div>
         <p data-i18n="gpl.text">A photo catalog that places your photos on a map using GPS coordinates from EXIF and sorts them by date.</p>
         <ul>
@@ -176,12 +186,17 @@ footer a { color: var(--muted); }
       </div>
       <div class="shot"><img src="img/geo-photo-library.jpg" alt="GeoPhotoLibrary" width="1200" height="852" loading="lazy"></div>
     </article>
+    </div>
+  </section>
 
+  <section class="wrap section" id="gnome">
+    <div class="section-head"><h2 data-i18n="gnome">GNOME extensions</h2><p data-i18n="gnome.sub">Add-ons for GNOME Shell, available on extensions.gnome.org</p></div>
+    <div class="projects">
     <article class="card">
       <div class="body">
         <div class="head">
           <div class="icon pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="3"/><rect x="12" y="11.5" width="7" height="6" rx="1.5" fill="currentColor"/></svg></div>
-          <div><h2>Auto PiP Manager</h2><div class="kind" data-i18n="ext.kind">GNOME Shell extension</div></div>
+          <div><h3>Auto PiP Manager</h3><div class="kind" data-i18n="ext.kind">GNOME Shell extension</div></div>
         </div>
         <p data-i18n="pip.text">Manages Picture-in-Picture windows of Firefox and Chromium-based browsers with macOS-like behaviour.</p>
         <ul>
@@ -202,7 +217,7 @@ footer a { color: var(--muted); }
       <div class="body">
         <div class="head">
           <div class="icon ocr"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.4 1.6"/><path d="M4 4h8v1.8H9.1v6.7H6.9V5.8H4z" fill="currentColor"/></svg></div>
-          <div><h2>GOCR</h2><div class="kind" data-i18n="ext.kind">GNOME Shell extension</div></div>
+          <div><h3>GOCR</h3><div class="kind" data-i18n="ext.kind">GNOME Shell extension</div></div>
         </div>
         <p data-i18n="ocr.text">Select any area of the screen and copy the recognized text to the clipboard. Uses Tesseract OCR.</p>
         <ul>
@@ -226,6 +241,7 @@ footer a { color: var(--muted); }
         </div>
       </div>
     </article>
+    </div>
   </section>
 </main>
 
@@ -259,6 +275,8 @@ var T = {
     'ocr.demo1': 'Текст на картинке, в видео или в окне, где его не выделить, —',
     'ocr.demo2': 'просто обведите его рамкой',
     'ocr.toast': 'Текст скопирован в буфер обмена',
+    apps: 'Приложения', 'apps.sub': 'Программы для macOS, Linux и Windows',
+    gnome: 'Расширения GNOME', 'gnome.sub': 'Дополнения для GNOME Shell, есть на extensions.gnome.org',
     sponsor: 'Поддержать на GitHub'
   },
   el: {
@@ -282,6 +300,8 @@ var T = {
     'ocr.demo1': 'Κείμενο σε εικόνα, βίντεο ή παράθυρο που δεν επιλέγεται —',
     'ocr.demo2': 'απλώς σχεδιάστε ένα πλαίσιο γύρω του',
     'ocr.toast': 'Το κείμενο αντιγράφηκε στο πρόχειρο',
+    apps: 'Εφαρμογές', 'apps.sub': 'Προγράμματα για macOS, Linux και Windows',
+    gnome: 'Επεκτάσεις GNOME', 'gnome.sub': 'Πρόσθετα για το GNOME Shell, διαθέσιμα στο extensions.gnome.org',
     sponsor: 'Υποστήριξη στο GitHub'
   }
 };
