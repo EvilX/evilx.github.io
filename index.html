@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EvilX — projects</title>
-<meta name="description" content="Open-source desktop software by EvilX: GeoPhotoLibrary, a photo catalog with a map, GNOME Shell extensions Auto PiP Manager and GOCR, and WMover for Windows 11.">
+<meta name="description" content="Open-source desktop software by EvilX: GeoPhotoLibrary, a photo catalog with a map, GNOME Shell extensions Auto PiP Manager and GOCR, and Windows tray utilities WMover and Tiny Desktop Indicator.">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://evilx.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6bff'/%3E%3Cpath d='M10 9h12v3h-8.5v2.5H21v3h-7.5V20H22v3H10z' fill='white'/%3E%3C/svg%3E">
 <meta property="og:title" content="EvilX — projects">
-<meta property="og:description" content="GeoPhotoLibrary, Auto PiP Manager, GOCR, WMover — open-source desktop software.">
+<meta property="og:description" content="GeoPhotoLibrary, Auto PiP Manager, GOCR, WMover, Tiny Desktop Indicator — open-source desktop software.">
 <meta property="og:image" content="https://evilx.github.io/img/geo-photo-library.jpg">
 <style>
 :root {
@@ -143,6 +143,22 @@ h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -w
 .wm-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: color-mix(in srgb, var(--surface) 82%, transparent); }
 .wm-keys { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-top: 18px; font-size: 13px; color: var(--muted); }
 .wm-keys span { display: inline-flex; align-items: center; gap: 6px; }
+.tdi-shot { width: 100%; height: 100%; min-height: 260px; display: grid; place-items: center; padding: 32px; }
+.tdi-demo { width: min(400px, 100%); display: grid; gap: 14px; }
+.tdi-bar {
+  display: flex; align-items: center; justify-content: flex-end; gap: 14px; height: 48px; padding: 0 16px;
+  border-radius: 10px; background: #1f2330; color: #e8eaf0; font-size: 13px; box-shadow: var(--shadow);
+}
+.tdi-bar.light { background: #f3f3f3; color: #1c1d21; }
+.tdi-tray { display: flex; align-items: center; gap: 12px; opacity: .75; }
+.tdi-tray i { width: 14px; height: 14px; border-radius: 3px; background: currentColor; opacity: .5; }
+.tdi-num {
+  width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center;
+  border: 2px solid currentColor; font-weight: 700; font-size: 12px; line-height: 1;
+}
+.tdi-num.cur { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tdi-clock { text-align: right; line-height: 1.2; font-size: 11px; }
+.tdi-hint { text-align: center; font-size: 13px; color: var(--muted); }
 kbd {
   font: 600 12px/1 inherit; font-family: inherit; color: var(--text); background: var(--surface);
   border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 4px 7px;
@@ -267,7 +283,7 @@ footer a { color: var(--muted); }
   </section>
 
   <section class="wrap section" id="windows">
-    <div class="section-head"><h2 data-i18n="win">Windows utilities</h2><p data-i18n="win.sub">Small tools for Windows 11</p></div>
+    <div class="section-head"><h2 data-i18n="win">Windows utilities</h2><p data-i18n="win.sub">Small tray tools for Windows</p></div>
     <div class="projects">
     <article class="card">
       <div class="body">
@@ -295,6 +311,35 @@ footer a { color: var(--muted); }
               <span><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>E</kbd> ⅔</span>
               <span><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>G</kbd> ⅓</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="body">
+        <div class="head">
+          <img class="icon" src="img/tinydesktopindicator.png" alt="" width="52" height="52">
+          <div><h3>Tiny Desktop Indicator</h3><div class="kind" data-i18n="tdi.kind">Tray utility for Windows 10 and 11</div></div>
+        </div>
+        <p data-i18n="tdi.text">Shows the number of the current virtual desktop right in the system tray.</p>
+        <ul>
+          <li data-i18n="tdi.f1">The icon updates instantly when you switch desktops</li>
+          <li data-i18n="tdi.f2">Left click switches to the next desktop</li>
+          <li data-i18n="tdi.f3">Follows the light and dark theme, optional autostart</li>
+        </ul>
+        <div class="tags"><span>Windows 10 / 11</span><span>C# / .NET 8</span></div>
+        <div class="links">
+          <a class="btn primary" href="https://apps.microsoft.com/store/detail/9MTLZ40SZ8BL">Microsoft Store</a>
+          <a class="btn" href="https://github.com/EvilX/tinydesktopindicator">GitHub</a>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="tdi-shot" aria-hidden="true">
+          <div class="tdi-demo">
+            <div class="tdi-bar"><div class="tdi-tray"><i></i><i></i><i></i></div><div class="tdi-num cur">2</div><div class="tdi-clock">14:20<br>25.11.2026</div></div>
+            <div class="tdi-bar light"><div class="tdi-tray"><i></i><i></i><i></i></div><div class="tdi-num">3</div><div class="tdi-clock">14:21<br>25.11.2026</div></div>
+            <div class="tdi-hint" data-i18n="tdi.hint">Click — next desktop</div>
           </div>
         </div>
       </div>
@@ -335,7 +380,13 @@ var T = {
     'ocr.toast': 'Текст скопирован в буфер обмена',
     apps: 'Приложения', 'apps.sub': 'Программы для macOS, Linux и Windows',
     gnome: 'Расширения GNOME', 'gnome.sub': 'Дополнения для GNOME Shell, есть на extensions.gnome.org',
-    win: 'Утилиты для Windows', 'win.sub': 'Небольшие инструменты для Windows 11',
+    win: 'Утилиты для Windows', 'win.sub': 'Небольшие утилиты в трее Windows',
+    'tdi.kind': 'Утилита в трее для Windows 10 и 11',
+    'tdi.text': 'Показывает номер текущего виртуального рабочего стола прямо в трее.',
+    'tdi.f1': 'Значок обновляется сразу при смене рабочего стола',
+    'tdi.f2': 'Щелчок левой кнопкой — следующий рабочий стол',
+    'tdi.f3': 'Подстраивается под светлую и тёмную тему, автозапуск по желанию',
+    'tdi.hint': 'Щелчок — следующий рабочий стол',
     'wm.kind': 'Утилита в трее для Windows 11',
     'wm.text': 'Мгновенно перемещает активное окно и меняет его размер по готовым раскладкам — глобальными сочетаниями клавиш.',
     'wm.f1': 'Половины, трети, две трети и центр экрана',
@@ -366,7 +417,13 @@ var T = {
     'ocr.toast': 'Το κείμενο αντιγράφηκε στο πρόχειρο',
     apps: 'Εφαρμογές', 'apps.sub': 'Προγράμματα για macOS, Linux και Windows',
     gnome: 'Επεκτάσεις GNOME', 'gnome.sub': 'Πρόσθετα για το GNOME Shell, διαθέσιμα στο extensions.gnome.org',
-    win: 'Βοηθητικά προγράμματα Windows', 'win.sub': 'Μικρά εργαλεία για Windows 11',
+    win: 'Βοηθητικά προγράμματα Windows', 'win.sub': 'Μικρά εργαλεία στην περιοχή ειδοποιήσεων των Windows',
+    'tdi.kind': 'Βοηθητικό πρόγραμμα για Windows 10 και 11',
+    'tdi.text': 'Δείχνει τον αριθμό της τρέχουσας εικονικής επιφάνειας εργασίας στην περιοχή ειδοποιήσεων.',
+    'tdi.f1': 'Το εικονίδιο ενημερώνεται αμέσως όταν αλλάζετε επιφάνεια εργασίας',
+    'tdi.f2': 'Αριστερό κλικ — επόμενη επιφάνεια εργασίας',
+    'tdi.f3': 'Ακολουθεί το ανοιχτό και σκούρο θέμα, προαιρετική αυτόματη εκκίνηση',
+    'tdi.hint': 'Κλικ — επόμενη επιφάνεια εργασίας',
     'wm.kind': 'Βοηθητικό πρόγραμμα γραμμής εργασιών για Windows 11',
     'wm.text': 'Μετακινεί και αλλάζει αμέσως το μέγεθος του ενεργού παραθύρου σε σταθερές διατάξεις με καθολικές συντομεύσεις πληκτρολογίου.',
     'wm.f1': 'Μισά, τρίτα, δύο τρίτα και κέντρο',
