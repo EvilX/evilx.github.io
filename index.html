@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EvilX — projects</title>
-<meta name="description" content="Open-source desktop software by EvilX: GeoPhotoLibrary, a photo catalog with a map, and GNOME Shell extensions Auto PiP Manager and GOCR.">
+<meta name="description" content="Open-source desktop software by EvilX: GeoPhotoLibrary, a photo catalog with a map, GNOME Shell extensions Auto PiP Manager and GOCR, and WMover for Windows 11.">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://evilx.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6bff'/%3E%3Cpath d='M10 9h12v3h-8.5v2.5H21v3h-7.5V20H22v3H10z' fill='white'/%3E%3C/svg%3E">
 <meta property="og:title" content="EvilX — projects">
-<meta property="og:description" content="GeoPhotoLibrary, Auto PiP Manager, GOCR — open-source desktop software.">
+<meta property="og:description" content="GeoPhotoLibrary, Auto PiP Manager, GOCR, WMover — open-source desktop software.">
 <meta property="og:image" content="https://evilx.github.io/img/geo-photo-library.jpg">
 <style>
 :root {
@@ -126,6 +126,27 @@ h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -w
   box-shadow: var(--shadow); font-size: 14px; color: var(--text);
 }
 .ocr-demo .toast b { font-weight: 600; }
+.wm-shot { width: 100%; height: 100%; min-height: 260px; display: grid; place-items: center; padding: 32px; }
+.wm-demo { width: min(400px, 100%); }
+.wm-screen {
+  position: relative; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden;
+  background: linear-gradient(135deg, #4f7fe8, #7aa7f5 55%, #b6cdf7); box-shadow: var(--shadow);
+}
+.wm-win {
+  position: absolute; top: 6px; bottom: 22px; border-radius: 6px;
+  background: var(--surface); border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+}
+.wm-win::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--text) 5%, var(--surface)); border-radius: 6px 6px 0 0; }
+.wm-a { left: 6px; width: calc(66.66% - 9px); }
+.wm-b { right: 6px; width: calc(33.33% - 9px); }
+.wm-a::after, .wm-b::after { content: ""; position: absolute; left: 10px; right: 30%; top: 22px; height: 40%; background: repeating-linear-gradient(var(--line) 0 4px, transparent 4px 10px); }
+.wm-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: color-mix(in srgb, var(--surface) 82%, transparent); }
+.wm-keys { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-top: 18px; font-size: 13px; color: var(--muted); }
+.wm-keys span { display: inline-flex; align-items: center; gap: 6px; }
+kbd {
+  font: 600 12px/1 inherit; font-family: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 4px 7px;
+}
 
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
@@ -147,6 +168,7 @@ footer a { color: var(--muted); }
     <div class="top">
       <a class="sec" href="#apps" data-i18n="apps">Apps</a>
       <a class="sec" href="#gnome" data-i18n="gnome">GNOME extensions</a>
+      <a class="sec" href="#windows" data-i18n="win">Windows utilities</a>
       <a href="https://github.com/EvilX" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
       <div class="langs" role="group" aria-label="Language">
         <button type="button" data-lang="en">EN</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="el">EL</button>
@@ -243,6 +265,42 @@ footer a { color: var(--muted); }
     </article>
     </div>
   </section>
+
+  <section class="wrap section" id="windows">
+    <div class="section-head"><h2 data-i18n="win">Windows utilities</h2><p data-i18n="win.sub">Small tools for Windows 11</p></div>
+    <div class="projects">
+    <article class="card">
+      <div class="body">
+        <div class="head">
+          <img class="icon" src="img/wmover.png" alt="" width="52" height="52">
+          <div><h3>WMover</h3><div class="kind" data-i18n="wm.kind">Tray utility for Windows 11</div></div>
+        </div>
+        <p data-i18n="wm.text">Instantly moves and resizes the active window to fixed layouts with global keyboard shortcuts.</p>
+        <ul>
+          <li data-i18n="wm.f1">Halves, thirds, two-thirds and center</li>
+          <li data-i18n="wm.f2">Works on the window's monitor and respects the taskbar</li>
+          <li data-i18n="wm.f3">Lives in the tray, shortcuts can be reassigned</li>
+        </ul>
+        <div class="tags"><span>Windows 11</span><span>C# / .NET 8</span></div>
+        <div class="links">
+          <a class="btn primary" href="https://apps.microsoft.com/store/detail/9NKWN112GR1Q">Microsoft Store</a>
+          <a class="btn" href="https://github.com/EvilX/WMover">GitHub</a>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="wm-shot" aria-hidden="true">
+          <div class="wm-demo">
+            <div class="wm-screen"><div class="wm-win wm-a"></div><div class="wm-win wm-b"></div><div class="wm-bar"></div></div>
+            <div class="wm-keys">
+              <span><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>E</kbd> ⅔</span>
+              <span><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>G</kbd> ⅓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -277,6 +335,12 @@ var T = {
     'ocr.toast': 'Текст скопирован в буфер обмена',
     apps: 'Приложения', 'apps.sub': 'Программы для macOS, Linux и Windows',
     gnome: 'Расширения GNOME', 'gnome.sub': 'Дополнения для GNOME Shell, есть на extensions.gnome.org',
+    win: 'Утилиты для Windows', 'win.sub': 'Небольшие инструменты для Windows 11',
+    'wm.kind': 'Утилита в трее для Windows 11',
+    'wm.text': 'Мгновенно перемещает активное окно и меняет его размер по готовым раскладкам — глобальными сочетаниями клавиш.',
+    'wm.f1': 'Половины, трети, две трети и центр экрана',
+    'wm.f2': 'Работает на мониторе окна и учитывает панель задач',
+    'wm.f3': 'Живёт в трее, сочетания клавиш можно переназначить',
     sponsor: 'Поддержать на GitHub'
   },
   el: {
@@ -302,6 +366,12 @@ var T = {
     'ocr.toast': 'Το κείμενο αντιγράφηκε στο πρόχειρο',
     apps: 'Εφαρμογές', 'apps.sub': 'Προγράμματα για macOS, Linux και Windows',
     gnome: 'Επεκτάσεις GNOME', 'gnome.sub': 'Πρόσθετα για το GNOME Shell, διαθέσιμα στο extensions.gnome.org',
+    win: 'Βοηθητικά προγράμματα Windows', 'win.sub': 'Μικρά εργαλεία για Windows 11',
+    'wm.kind': 'Βοηθητικό πρόγραμμα γραμμής εργασιών για Windows 11',
+    'wm.text': 'Μετακινεί και αλλάζει αμέσως το μέγεθος του ενεργού παραθύρου σε σταθερές διατάξεις με καθολικές συντομεύσεις πληκτρολογίου.',
+    'wm.f1': 'Μισά, τρίτα, δύο τρίτα και κέντρο',
+    'wm.f2': 'Λειτουργεί στην οθόνη του παραθύρου και σέβεται τη γραμμή εργασιών',
+    'wm.f3': 'Βρίσκεται στην περιοχή ειδοποιήσεων, οι συντομεύσεις αλλάζουν',
     sponsor: 'Υποστήριξη στο GitHub'
   }
 };
